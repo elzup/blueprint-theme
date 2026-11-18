@@ -1,0 +1,19 @@
+/* Artifact (claude.ai) で公開するときだけ足す上書き。
+   report-theme.css の body padding は 40px 固定で、スマホの側面バー (safe-area) を避けないため */
+body {
+  padding-block: 36px 80px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (min-width: 900px) {
+  body {
+    padding-left: max(40px, env(safe-area-inset-left, 0px));
+    padding-right: max(40px, env(safe-area-inset-right, 0px));
+  }
+}
+/* 上端の操作バーは host の UI に潜らないよう safe-area 分だけ下げ、その帯を同じ地で塗る */
+.pv-controls { top: env(safe-area-inset-top, 0px); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.pv-controls .seg { flex-wrap: wrap; max-width: 100%; }
+.pv-days { grid-template-columns: repeat(auto-fill, minmax(min(330px, 100%), 1fr)); }
+.main { min-width: 0; }

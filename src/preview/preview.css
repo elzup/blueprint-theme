@@ -1,0 +1,144 @@
+/* プレビュー専用の部品。色はすべて JS が .pv-scope に流し込む --m-* / --s-* 変数経由
+   (ページ自体の配色は report-theme.css、見本の中の配色は検証対象のバリアント) */
+
+.pv-controls { position: sticky; top: 0; z-index: 5; display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center;
+  padding: 10px 0; margin-bottom: 18px; background: var(--bg); border-bottom: 1px solid var(--border); }
+.pv-controls label { font-family: var(--font-mono); font-size: 11px; color: var(--text-dim); margin-right: 6px; }
+.pv-hint { font-size: 12px; color: var(--text-dim); }
+
+/* ---- 色見本 */
+.pv-swatch-group { margin-bottom: 18px; }
+.pv-swatch-group h3 { font-size: 13px; margin: 0 0 8px; }
+.pv-swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 8px; }
+.pv-swatch { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--surface); }
+.pv-swatch__chip { height: 46px; display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono); font-size: 13px; font-weight: 700; }
+.pv-swatch__meta { padding: 6px 8px; font-family: var(--font-mono); font-size: 10.5px; line-height: 1.5; }
+.pv-swatch__meta b { display: block; font-size: 11px; color: var(--text); }
+.pv-swatch__meta span { color: var(--text-dim); }
+
+/* ---- 見本の器 */
+.pv-scope { color: var(--m-text); background: var(--m-bg); font-family: var(--font-mono); }
+
+.pv-days { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 12px; }
+.pv-day { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; cursor: pointer; text-align: left; padding: 0;
+  font: inherit; transition: transform .12s; }
+.pv-day:hover { transform: translateY(-2px); }
+.pv-day.is-on { outline: 3px solid var(--accent); outline-offset: 2px; }
+.pv-day__head { display: flex; align-items: center; gap: 8px; padding: 6px 10px; font-size: 12px;
+  background: var(--m-bg2); border-bottom: 2px solid var(--m-accent); color: var(--m-text); }
+.pv-day__dot { width: 10px; height: 10px; border-radius: 50%; background: var(--m-accent); }
+.pv-day__head .status { margin-left: auto; }
+
+.pv-code { margin: 0; padding: 10px 0; font-size: 12px; line-height: 1.65; white-space: pre; overflow-x: auto; background: var(--m-bg); }
+.pv-line { display: block; padding: 0 12px 0 0; }
+.pv-line::before { content: attr(data-n); display: inline-block; width: 3.2em; padding-right: 1em; text-align: right; color: var(--m-lnum); }
+.pv-line.is-current { background: var(--m-surface); }
+.pv-line.is-current::before { color: var(--m-accent); }
+.pv-sel { background: var(--m-sel); }
+.pv-cursor { display: inline-block; width: 2px; height: 1.2em; vertical-align: text-bottom; background: var(--m-accent); margin-left: -1px; }
+
+.t-c { color: var(--s-c); font-style: italic; } .t-k { color: var(--s-k); } .t-s { color: var(--s-s); }
+.t-n { color: var(--s-n); } .t-t { color: var(--s-t); } .t-f { color: var(--s-f); } .t-v { color: var(--s-v); }
+.t-p { color: var(--s-p); } .t-o { color: var(--s-o); } .t-u { color: var(--s-u); } .t-g { color: var(--s-g); }
+.t-a { color: var(--s-a); } .t-x { color: var(--s-x); text-decoration: wavy underline; } .t-_ { color: var(--m-text); }
+
+/* ---- エディタ全体のモック */
+.pv-mock { border: 1px solid var(--border-bright); border-radius: 10px; overflow: hidden; font-size: 12px; }
+.pv-titlebar { display: flex; align-items: center; gap: 8px; padding: 7px 12px; background: var(--m-surface2);
+  border-bottom: 1px solid var(--m-accent); color: var(--m-text); }
+.pv-titlebar i { width: 10px; height: 10px; border-radius: 50%; background: var(--m-border-bright); }
+.pv-titlebar span { margin: 0 auto; }
+.pv-body { display: grid; grid-template-columns: 44px 200px minmax(0, 1fr); min-height: 420px; }
+.pv-activity { background: var(--m-bg2); border-right: 1px solid var(--m-border); display: flex; flex-direction: column; align-items: center; gap: 14px; padding-top: 12px; }
+.pv-activity i { position: relative; width: 20px; height: 20px; border-radius: 4px; border: 2px solid var(--m-dim); }
+.pv-activity i.is-on { border-color: var(--m-accent); }
+.pv-activity b { position: absolute; right: -9px; bottom: -7px; min-width: 15px; height: 15px; padding: 0 3px; border-radius: 8px;
+  font-size: 9.5px; line-height: 15px; text-align: center; background: var(--m-button); color: var(--m-bg); }
+.pv-side { background: var(--m-bg2); border-right: 1px solid var(--m-border); padding: 8px 0; }
+.pv-side__head { padding: 0 12px 6px; font-size: 10.5px; letter-spacing: .08em; color: var(--m-dim); }
+.pv-file { display: flex; justify-content: space-between; padding: 3px 12px 3px 20px; color: var(--m-text); }
+.pv-file.is-sel { background: var(--m-list-sel); }
+.pv-file.is-hover { background: var(--m-surface2); }
+.pv-file em { font-style: normal; font-weight: 700; }
+.pv-main { display: grid; grid-template-rows: auto 1fr auto; min-width: 0; }
+.pv-tabs { display: flex; background: var(--m-bg2); border-bottom: 1px solid var(--m-border); }
+.pv-tab { padding: 7px 14px; color: var(--m-dim); border-right: 1px solid var(--m-border); border-top: 2px solid transparent; }
+.pv-tab.is-on { background: var(--m-bg); color: var(--m-text); border-top-color: var(--m-accent); }
+.pv-panel { border-top: 1px solid var(--m-border); background: var(--m-bg2); }
+.pv-panel__tabs { display: flex; gap: 16px; padding: 6px 12px 0; font-size: 10.5px; letter-spacing: .06em; color: var(--m-dim); }
+.pv-panel__tabs .is-on { color: var(--m-text); border-bottom: 1px solid var(--m-accent); padding-bottom: 4px; }
+.pv-term { margin: 0; padding: 8px 12px 12px; line-height: 1.6; white-space: pre-wrap; background: var(--m-bg); }
+.pv-ansi { display: inline-block; width: 22px; height: 14px; margin-right: 3px; vertical-align: middle; border-radius: 2px; }
+.pv-status { display: flex; gap: 16px; padding: 4px 12px; background: var(--m-surface2); color: var(--m-text); border-top: 1px solid var(--m-border); }
+.pv-status span:last-child { margin-left: auto; }
+
+.pv-widgets { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding: 14px 12px; border-top: 1px solid var(--m-border); background: var(--m-bg); }
+.pv-btn { padding: 6px 14px; border-radius: 4px; border: 0; font: inherit; cursor: pointer; background: var(--m-button); color: var(--m-bg); }
+.pv-btn:hover, .pv-btn.is-hover { background: var(--m-button-hover); color: var(--m-bg); }
+.pv-btn--2 { background: var(--m-surface2); color: var(--m-text); }
+.pv-btn--2:hover, .pv-btn--2.is-hover { background: var(--m-elevated); color: var(--m-text); }
+.pv-input { padding: 5px 10px; border-radius: 4px; border: 1px solid var(--m-border); background: var(--m-surface); color: var(--m-text); font: inherit; }
+.pv-input.is-focus { border-color: var(--m-accent); outline: 1px solid var(--m-accent); }
+.pv-diag { padding: 2px 8px; border-radius: 3px; }
+
+@media (max-width: 760px) {
+  .pv-body { grid-template-columns: 36px minmax(0, 1fr); }
+  .pv-side { display: none; }
+}
+
+/* ---- 判定表 */
+.pv-sw { display: inline-block; width: 14px; height: 14px; border-radius: 3px; vertical-align: middle; margin-right: 6px; border: 1px solid var(--border); }
+.pv-num { font-family: var(--font-mono); }
+
+/* ---- 曜日見本帳 (1 曜日 = 1 枚。コード / diff / 端末 / UI 部品 / 通知 / レポート部品) */
+.pv-book { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(380px, 100%), 1fr)); gap: 16px; }
+.pv-spec { border: 1px solid var(--border-bright); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; min-width: 0; }
+.pv-spec.is-on { outline: 3px solid var(--accent); outline-offset: 2px; }
+.pv-spec__head { display: grid; grid-template-columns: auto 1fr auto; gap: 2px 12px; align-items: center; padding: 12px 14px;
+  background: var(--m-bg2); border-bottom: 3px solid var(--m-accent); cursor: pointer; }
+.pv-spec__kanji { grid-row: span 2; width: 44px; height: 44px; border-radius: 10px; display: grid; place-items: center;
+  font-family: var(--font-jp); font-size: 24px; font-weight: 700; background: var(--m-accent); color: var(--m-on-accent); }
+.pv-spec__name { font-size: 13px; font-weight: 700; color: var(--m-text); }
+.pv-spec__sub { font-size: 11px; color: var(--m-dim); }
+.pv-spec__head .status { grid-row: span 2; }
+.pv-spec__sec { padding: 10px 14px; border-bottom: 1px solid var(--m-border); }
+.pv-spec__sec:last-child { border-bottom: 0; }
+.pv-spec__label { font-size: 9.5px; letter-spacing: .1em; color: var(--m-dim); margin-bottom: 6px; }
+.pv-spec .pv-code { padding: 6px 0; font-size: 11.5px; }
+.pv-spec .pv-term { padding: 0; font-size: 11.5px; }
+
+.pv-diff { margin: 0; font-size: 11.5px; line-height: 1.6; white-space: pre; overflow-x: auto; }
+.pv-diff span { display: block; padding: 0 6px; }
+.pv-diff .is-add { background: var(--m-green-dim); color: var(--m-green); }
+.pv-diff .is-del { background: var(--m-red-dim); color: var(--m-red); }
+.pv-diff .is-hunk { color: var(--m-brand); }
+
+.pv-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.pv-row + .pv-row { margin-top: 8px; }
+.pv-badge { min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px; font-size: 10.5px; line-height: 18px; text-align: center;
+  background: var(--m-button); color: var(--m-on-button); }
+.pv-chip { padding: 1px 8px; border-radius: 999px; font-size: 10.5px; border: 1px solid currentColor; }
+.pv-link { color: var(--m-brand); text-decoration: underline; text-underline-offset: 2px; }
+.pv-toggle { width: 30px; height: 16px; border-radius: 8px; background: var(--m-accent); position: relative; }
+.pv-toggle::after { content: ""; position: absolute; top: 2px; right: 2px; width: 12px; height: 12px; border-radius: 50%; background: var(--m-bg); }
+.pv-toggle.is-off { background: var(--m-border-bright); }
+.pv-toggle.is-off::after { right: auto; left: 2px; }
+.pv-check { width: 14px; height: 14px; border-radius: 3px; background: var(--m-accent); color: var(--m-on-accent); font-size: 11px; line-height: 14px; text-align: center; }
+.pv-radio { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--m-accent); display: grid; place-items: center; }
+.pv-radio::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--m-accent); }
+.pv-progress { flex: 1 1 120px; height: 6px; border-radius: 3px; background: var(--m-surface2); overflow: hidden; }
+.pv-progress i { display: block; width: 62%; height: 100%; background: var(--m-accent); }
+.pv-mini-tabs { display: flex; gap: 14px; font-size: 11.5px; color: var(--m-dim); border-bottom: 1px solid var(--m-border); }
+.pv-mini-tabs span { padding-bottom: 5px; }
+.pv-mini-tabs .is-on { color: var(--m-text); border-bottom: 2px solid var(--m-accent); }
+
+.pv-alerts { display: grid; gap: 6px; }
+.pv-alert { padding: 6px 10px; border-radius: 6px; font-size: 11.5px; border-left: 3px solid currentColor; }
+
+.pv-rtable { width: 100%; border-collapse: collapse; font-size: 11.5px; }
+.pv-rtable th { text-align: left; font-weight: 600; font-size: 10px; letter-spacing: .06em; color: var(--m-dim); padding: 4px 6px; border-bottom: 1px solid var(--m-border-bright); }
+.pv-rtable td { padding: 5px 6px; border-bottom: 1px solid var(--m-border); color: var(--m-text); }
+.pv-rtable tr:nth-child(even) td { background: var(--m-accent-dim); }
+.pv-rtable tr.is-hl td { background: var(--m-surface2); box-shadow: inset 3px 0 0 var(--m-accent); }
+.pv-num-badge { display: inline-block; padding: 0 6px; margin-right: 6px; border-radius: 4px; font-size: 10.5px; color: var(--m-accent); background: var(--m-accent-dim); }
